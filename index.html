@@ -23,6 +23,10 @@ body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100v
 .lf-group input{background:#1a0d2e;border:2px solid #4a1d7a;border-radius:10px;color:#fff;font-family:'Sora',sans-serif;font-size:13px;padding:11px 12px;outline:none}
 .lf-group input:focus{border-color:#a855f7}
 .lf-group input::placeholder{color:#4a1d7a}
+.lf-pass-wrap{position:relative}
+.lf-pass-wrap input{width:100%;padding-right:42px}
+.pass-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:#9370db;font-size:17px;display:flex}
+.pass-eye:hover{color:#c084fc}
 .login-btn{width:100%;padding:13px;background:#7c3aed;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 15px #7c3aed50}
 .login-btn:hover{background:#9333ea}
 .login-btn:disabled{opacity:.5;cursor:not-allowed}
@@ -36,7 +40,13 @@ body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100v
 #app{display:none}
 .db{display:flex;min-height:100vh}
 
-.sidebar{width:220px;flex-shrink:0;background:#240d3a;padding:0;display:flex;flex-direction:column;border-right:2px solid #4a1d7a;position:fixed;top:0;left:0;height:100vh;overflow-y:auto}
+.sidebar{width:220px;flex-shrink:0;background:#240d3a;padding:0;display:flex;flex-direction:column;border-right:2px solid #4a1d7a;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;transition:width .25s,transform .25s;z-index:50}
+.sidebar.collapsed{width:0;overflow:hidden;border-right:none}
+.collapse-btn{position:fixed;top:14px;left:228px;width:28px;height:28px;background:#7c3aed;border:2px solid #a855f7;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:60;transition:left .25s;box-shadow:0 4px 10px #7c3aed50}
+.collapse-btn:hover{background:#9333ea}
+.collapse-btn i{font-size:14px;color:#fff;transition:transform .25s}
+.collapse-btn.collapsed{left:10px}
+.collapse-btn.collapsed i{transform:rotate(180deg)}
 .logo-wrap{padding:1.2rem 1rem;border-bottom:2px solid #4a1d7a;margin-bottom:.5rem}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-gem{width:40px;height:40px;background:#9333ea;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0}
@@ -70,7 +80,8 @@ body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100v
 .logout-btn:hover{color:#f87171;background:#3b1060}
 .logout-btn i{font-size:14px}
 
-.main{flex:1;margin-left:220px;background:#1a0d2e}
+.main{flex:1;margin-left:220px;background:#1a0d2e;transition:margin-left .25s}
+.main.expanded{margin-left:0}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-bottom:2px solid #4a1d7a;background:#240d3a;position:sticky;top:0;z-index:10}
 .page-title{font-size:16px;font-weight:800;color:#fff}
 .page-sub{font-size:11px;color:#c084fc;margin-top:2px;font-weight:500}
@@ -226,7 +237,7 @@ body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100v
     </div>
     <div class="login-form">
       <div class="lf-group"><label>E-mail</label><input type="email" id="login-email" placeholder="seu@email.com" /></div>
-      <div class="lf-group"><label>Senha</label><input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" /></div>
+      <div class="lf-group"><label>Senha</label><div class="lf-pass-wrap"><input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" /><span class="pass-eye" onclick="togglePass('login-pass',this)"><i class="ti ti-eye"></i></span></div></div>
       <div class="login-error" id="login-error"></div>
       <button class="login-btn" id="login-btn" onclick="doLogin()">Entrar</button>
       <div class="forgot-link" onclick="showForgot()">Esqueci minha senha</div>
@@ -250,6 +261,8 @@ body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100v
     </div>
   </div>
 </div>
+
+<div class="collapse-btn" id="collapse-btn" onclick="toggleSidebar()"><i class="ti ti-chevron-left"></i></div>
 
 <div id="app">
   <div class="db">
@@ -650,6 +663,22 @@ const MOTIVACIONAL=[
   {emoji:'🎬',title:'Criativos prontos!',msg:'Você acabou de criar os ativos mais importantes da sua campanha. Um bom criativo é o que faz uma pessoa parar o scroll e prestar atenção em você. Os seus estão prontos! Agora é a etapa mais emocionante: anúncio no ar! 🎯'},
   {emoji:'🎯',title:'Anúncio no ar!',msg:'Você fez tudo certinho — produto, plataforma, Instagram, criativos e agora o anúncio rodando. Faltou só uma coisa: a primeira venda. E ela está chegando. Respira, confia no processo. Você fez sua parte! 💜'},
 ];
+
+function togglePass(id,el){
+  const inp=document.getElementById(id);
+  const icon=el.querySelector('i');
+  if(inp.type==='password'){inp.type='text';icon.className='ti ti-eye-off';}
+  else{inp.type='password';icon.className='ti ti-eye';}
+}
+
+function toggleSidebar(){
+  const sb=document.querySelector('.sidebar');
+  const main=document.querySelector('.main');
+  const btn=document.getElementById('collapse-btn');
+  const collapsed=sb.classList.toggle('collapsed');
+  main.classList.toggle('expanded',collapsed);
+  btn.classList.toggle('collapsed',collapsed);
+}
 
 function showLogin(){document.getElementById('login-screen').style.display='flex';document.getElementById('forgot-screen').style.display='none';document.getElementById('app').style.display='none';}
 function showForgot(){document.getElementById('login-screen').style.display='none';document.getElementById('forgot-screen').style.display='flex';}
