@@ -6,151 +6,216 @@
 <title>PEX IA — Método Exclusivo</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sora',sans-serif;background:#08060f;color:#fff;min-height:100vh}
-#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-#forgot-screen{display:none;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-.login-card{width:100%;max-width:380px;background:#0d0a18;border:1px solid #3d2d7a;border-radius:16px;padding:2rem}
+body{font-family:'Sora',sans-serif;background:#1a0d2e;color:#fff;min-height:100vh}
+
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#1a0d2e}
+#forgot-screen{display:none;align-items:center;justify-content:center;min-height:100vh;padding:2rem;background:#1a0d2e}
+.login-card{width:100%;max-width:400px;background:#240d3a;border:2px solid #6d28d9;border-radius:20px;padding:2rem}
 .login-logo{text-align:center;margin-bottom:1.5rem}
-.login-gem{width:48px;height:48px;background:#8b5cf6;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;color:#fff;box-shadow:0 0 20px #8b5cf670;margin-bottom:10px}
-.login-title{font-size:20px;font-weight:600;color:#fff}
-.login-sub{font-size:12px;color:#7c6aaa;margin-top:4px}
+.login-gem{width:56px;height:56px;background:#9333ea;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:28px;color:#fff;margin-bottom:10px}
+.login-title{font-size:22px;font-weight:800;color:#fff}
+.login-sub{font-size:13px;color:#c084fc;margin-top:4px}
 .login-form{display:flex;flex-direction:column;gap:12px}
 .lf-group{display:flex;flex-direction:column;gap:5px}
-.lf-group label{font-size:11px;color:#a89fc8;letter-spacing:.3px}
-.lf-group input{background:#08060f;border:1px solid #3d2d7a;border-radius:8px;color:#fff;font-family:'Sora',sans-serif;font-size:13px;padding:10px 12px;transition:border-color .15s;outline:none}
-.lf-group input:focus{border-color:#a78bfa;box-shadow:0 0 0 2px #8b5cf620}
-.lf-group input::placeholder{color:#3a2d5a}
-.login-btn{width:100%;padding:11px;background:#8b5cf6;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 0 14px #8b5cf650;transition:all .15s;margin-top:4px}
-.login-btn:hover{background:#a78bfa}
-.login-btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
-.forgot-link{text-align:center;font-size:11px;color:#7c6aaa;cursor:pointer;margin-top:4px}
-.forgot-link:hover{color:#c4b5fd}
-.login-error{font-size:11px;color:#f87171;background:#1a0a0a;border:1px solid #7f1d1d;border-radius:6px;padding:8px 10px;display:none}
+.lf-group label{font-size:12px;color:#e9d5ff;font-weight:600}
+.lf-group input{background:#1a0d2e;border:2px solid #4a1d7a;border-radius:10px;color:#fff;font-family:'Sora',sans-serif;font-size:13px;padding:11px 12px;outline:none}
+.lf-group input:focus{border-color:#a855f7}
+.lf-group input::placeholder{color:#4a1d7a}
+.login-btn{width:100%;padding:13px;background:#7c3aed;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 15px #7c3aed50}
+.login-btn:hover{background:#9333ea}
+.login-btn:disabled{opacity:.5;cursor:not-allowed}
+.forgot-link{text-align:center;font-size:12px;color:#c084fc;cursor:pointer;margin-top:4px;font-weight:500}
+.forgot-link:hover{color:#e9d5ff}
+.login-error{font-size:12px;color:#fca5a5;background:#450a0a;border:1.5px solid #7f1d1d;border-radius:8px;padding:8px 10px;display:none}
 .login-error.show{display:block}
-.login-success{font-size:11px;color:#86efac;background:#0a1a0a;border:1px solid #166534;border-radius:6px;padding:8px 10px;display:none;text-align:center}
+.login-success{font-size:12px;color:#86efac;background:#052e16;border:1.5px solid #166534;border-radius:8px;padding:8px 10px;display:none;text-align:center}
 .login-success.show{display:block}
+
 #app{display:none}
 .db{display:flex;min-height:100vh}
-.sidebar{width:210px;flex-shrink:0;background:#0d0a18;border-right:1px solid #3d2d7a;padding:1.2rem 0;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh}
-.logo-wrap{padding:0 1rem 1.2rem;border-bottom:1px solid #3d2d7a;margin-bottom:1rem}
-.logo{display:flex;align-items:center;gap:8px}
-.logo-gem{width:32px;height:32px;background:#8b5cf6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;box-shadow:0 0 12px #8b5cf680}
-.logo-text{font-size:16px;font-weight:600;letter-spacing:1px;color:#fff}
-.logo-sub{font-size:9px;color:#7c6aaa;letter-spacing:2px;margin-top:1px}
-.nav-item{display:flex;align-items:center;gap:9px;padding:9px 1rem;font-size:12px;font-weight:400;color:#fff;cursor:pointer;transition:all 0.15s;border-left:2px solid transparent}
-.nav-item:hover{background:#1a1030;color:#c4b5fd}
-.nav-item.active{color:#fff;background:#1a1030;border-left-color:#a78bfa;font-weight:600}
-.nav-item.active i{color:#c4b5fd}
-.nav-item i{font-size:15px;flex-shrink:0;color:#8b5cf6}
-.nav-item.locked{cursor:not-allowed;color:#4a3a6a;font-weight:300}
-.nav-item.locked i{color:#3a2d5a}
-.logout-btn{display:flex;align-items:center;gap:8px;padding:8px 1rem;font-size:11px;color:#7c6aaa;cursor:pointer;transition:all .15s;margin-top:auto;border-top:1px solid #2d1f5a}
-.logout-btn:hover{color:#f87171}
+
+.sidebar{width:220px;flex-shrink:0;background:#240d3a;padding:0;display:flex;flex-direction:column;border-right:2px solid #4a1d7a;position:fixed;top:0;left:0;height:100vh;overflow-y:auto}
+.logo-wrap{padding:1.2rem 1rem;border-bottom:2px solid #4a1d7a;margin-bottom:.5rem}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-gem{width:40px;height:40px;background:#9333ea;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0}
+.logo-text{font-size:18px;font-weight:800;color:#fff;letter-spacing:.5px}
+.logo-sub{font-size:9px;color:#c084fc;letter-spacing:2px;margin-top:1px;font-weight:600}
+.nav-section{padding:.6rem 1rem .2rem;font-size:9px;color:#9333ea;letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 1rem;font-size:12px;font-weight:600;color:#e9d5ff;cursor:pointer;transition:all 0.2s;border-radius:10px;margin:2px 8px}
+.nav-item:hover:not(.locked){background:#3b1060;color:#fff}
+.nav-item.active{background:#7c3aed;color:#fff;box-shadow:0 4px 15px #7c3aed60}
+.nav-item.active i{color:#fff}
+.nav-item i{font-size:16px;flex-shrink:0}
+.nav-item.locked{cursor:not-allowed;color:#9370db;font-weight:500}
+.nav-item.done{color:#a3e635}
+.nav-item.done i{color:#a3e635}
+.lock-icon{margin-left:auto;font-size:12px;color:#7c3aed;opacity:.7}
+.nav-item:nth-child(2) i{color:#f472b6}
+.nav-item:nth-child(3) i{color:#60a5fa}
+.nav-item:nth-child(4) i{color:#34d399}
+.nav-item:nth-child(5) i{color:#fb923c}
+.nav-item:nth-child(6) i{color:#f87171}
+.nav-item:nth-child(7) i{color:#a78bfa}
+.nav-item:nth-child(8) i{color:#fbbf24}
+.nav-item.active i,.nav-item.done i{color:#fff !important}
+.resources-section{margin-top:auto;border-top:2px solid #4a1d7a;padding:.75rem}
+.res-title{font-size:9px;color:#9333ea;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.res-btn{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#3b1060;border:1.5px solid #7c3aed;border-radius:10px;color:#e9d5ff;font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;margin-bottom:6px;transition:all .2s}
+.res-btn:hover{background:#4c1d8a;color:#fff;border-color:#a855f7}
+.res-btn i{font-size:14px;color:#c084fc}
+.res-btn.locked-res{opacity:.5;cursor:not-allowed;filter:grayscale(.5);pointer-events:none}
+.logout-btn{display:flex;align-items:center;gap:8px;padding:8px 12px;color:#9370db;font-size:11px;font-weight:600;cursor:pointer;border-radius:10px;margin-top:4px;transition:all .15s}
+.logout-btn:hover{color:#f87171;background:#3b1060}
 .logout-btn i{font-size:14px}
-.main{flex:1;margin-left:210px;background:#08060f}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-bottom:1px solid #2d1f5a;background:#08060f;position:sticky;top:0;z-index:10}
-.page-title{font-size:15px;font-weight:600;color:#fff}
-.page-sub{font-size:11px;color:#7c6aaa;margin-top:1px}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.user-email{font-size:10px;color:#a89fc8}
-.avatar{width:30px;height:30px;border-radius:50%;background:#8b5cf6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;box-shadow:0 0 8px #8b5cf660}
-.save-indicator{font-size:10px;color:#7c6aaa;display:flex;align-items:center;gap:4px}
-.save-indicator.saving{color:#a78bfa}
-.save-indicator.saved{color:#86efac}
-.content{padding:1.2rem 1.5rem;max-width:900px}
-.prog-bar-wrap{height:3px;background:#1e1530;margin-bottom:1.2rem;border-radius:2px}
-.prog-bar{height:3px;background:#8b5cf6;border-radius:2px;transition:width .4s;box-shadow:0 0 8px #8b5cf6}
-.hero{background:#0d0a18;border:1px solid #3d2d7a;border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;right:60px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,#8b5cf630,transparent 70%)}
-.hero-text h2{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
-.hero-text p{font-size:11px;color:#a89fc8;line-height:1.5;max-width:320px}
-.hero-gem{font-size:36px;color:#a78bfa;text-shadow:0 0 16px #8b5cf6aa}
-.steps-row{display:flex;margin-bottom:1.2rem;background:#0d0a18;border:1px solid #3d2d7a;border-radius:10px;overflow:hidden}
-.step-item{flex:1;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border-right:1px solid #2d1f5a;transition:all .15s}
-.step-item:last-child{border-right:none}
-.step-item:hover:not(.locked){background:#140f24}
-.step-item.active{background:#140f24}
-.step-item.done{background:#110d1e}
-.step-item.locked{cursor:not-allowed}
-.step-dot{width:26px;height:26px;border-radius:50%;border:1px solid #2d1f5a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:300;color:#3a2d5a;transition:all .2s}
-.step-item.active .step-dot{border-color:#a78bfa;color:#fff;background:#8b5cf6;font-weight:600;box-shadow:0 0 10px #8b5cf670}
-.step-item.done .step-dot{border-color:#a78bfa;background:#8b5cf6;color:#fff;font-weight:600}
-.step-name{font-size:10px;color:#3a2d5a;font-weight:300}
-.step-item.active .step-name{color:#fff;font-weight:600}
-.step-item.done .step-name{color:#c4b5fd;font-weight:500}
-.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.2rem}
-.stat-card{background:#0d0a18;border:1px solid #3d2d7a;border-radius:10px;padding:1rem}
-.stat-label{font-size:10px;color:#a89fc8;letter-spacing:.5px;margin-bottom:6px;display:flex;align-items:center;gap:5px}
-.stat-label i{font-size:13px;color:#a78bfa}
-.stat-val{font-size:22px;font-weight:600;color:#fff;letter-spacing:-0.5px}
-.stat-sub{font-size:10px;color:#7c6aaa;margin-top:3px}
-.panel{background:#0d0a18;border:1px solid #3d2d7a;border-radius:12px;overflow:hidden;margin-bottom:1rem}
-.panel-head{padding:.9rem 1.2rem;border-bottom:1px solid #2d1f5a;display:flex;align-items:center;justify-content:space-between}
-.panel-head-left{display:flex;align-items:center;gap:8px}
-.panel-icon{width:28px;height:28px;background:#1a1030;border:1px solid #8b5cf6;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#c4b5fd;box-shadow:0 0 8px #8b5cf640}
-.panel-title{font-size:13px;font-weight:600;color:#fff}
-.panel-desc{font-size:11px;color:#a89fc8;margin-top:2px}
-.badge-step{font-size:10px;padding:3px 10px;border-radius:20px;background:#1a1030;border:1px solid #8b5cf6;color:#c4b5fd;letter-spacing:.5px}
+
+.main{flex:1;margin-left:220px;background:#1a0d2e}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem;border-bottom:2px solid #4a1d7a;background:#240d3a;position:sticky;top:0;z-index:10}
+.page-title{font-size:16px;font-weight:800;color:#fff}
+.page-sub{font-size:11px;color:#c084fc;margin-top:2px;font-weight:500}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.prog-txt{font-size:11px;color:#e9d5ff;font-weight:600;background:#3b1060;padding:4px 12px;border-radius:20px}
+.avatar{width:34px;height:34px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;border:2px solid #a855f7}
+
+.content{padding:1.2rem 1.5rem;max-width:880px}
+.prog-bar-wrap{height:8px;background:#3b1060;margin-bottom:1.2rem;border-radius:20px;overflow:hidden}
+.prog-bar{height:8px;background:#7c3aed;border-radius:20px;transition:width .6s}
+
+.steps-row{display:flex;gap:6px;margin-bottom:1.2rem;flex-wrap:wrap}
+.step-pill{flex:1;min-width:80px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border-radius:12px;background:#240d3a;border:2px solid #4a1d7a;transition:all .2s}
+.step-pill:hover:not(.locked){border-color:#7c3aed;background:#3b1060}
+.step-pill.active{background:#7c3aed;border-color:#a855f7;box-shadow:0 4px 15px #7c3aed50}
+.step-pill.done{background:#3b1060;border-color:#a3e635}
+.step-pill.locked{cursor:not-allowed;opacity:.7}
+.step-dot{width:24px;height:24px;border-radius:50%;background:#4a1d7a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#c084fc}
+.step-pill.active .step-dot{background:#fff;color:#7c3aed}
+.step-pill.done .step-dot{background:#a3e635;color:#1a2e00;font-size:11px}
+.step-name{font-size:9px;color:#c084fc;font-weight:600;text-align:center;line-height:1.3}
+.step-pill.active .step-name{color:#fff;font-weight:700}
+.step-pill.done .step-name{color:#a3e635}
+.step-pill.locked .step-name{color:#7c6aaa}
+
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.2rem}
+.stat-card{background:#240d3a;border:2px solid #4a1d7a;border-radius:16px;padding:1rem;text-align:center}
+.stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin:0 auto 8px}
+.stat-icon.purple{background:#3b1060;color:#c084fc}
+.stat-icon.green{background:#052e16;color:#4ade80}
+.stat-icon.blue{background:#0c2545;color:#60a5fa}
+.stat-val{font-size:26px;font-weight:800;color:#fff}
+.stat-label{font-size:10px;color:#c084fc;font-weight:600;margin-top:2px}
+
+.panel{background:#240d3a;border:2px solid #4a1d7a;border-radius:20px;overflow:hidden;margin-bottom:1rem}
+.panel-head{padding:1rem 1.2rem;border-bottom:2px solid #4a1d7a;display:flex;align-items:center;justify-content:space-between;background:#2d1045}
+.panel-head-left{display:flex;align-items:center;gap:12px}
+.panel-icon-big{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.panel-icon-big.pink{background:#500724;color:#f9a8d4}
+.panel-icon-big.blue{background:#0c2545;color:#93c5fd}
+.panel-icon-big.green{background:#052e16;color:#86efac}
+.panel-icon-big.orange{background:#431407;color:#fdba74}
+.panel-icon-big.red{background:#450a0a;color:#fca5a5}
+.panel-icon-big.purple{background:#3b1060;color:#c084fc}
+.panel-icon-big.yellow{background:#422006;color:#fcd34d}
+.panel-icon-big.gold{background:#422006;color:#fcd34d}
+.panel-title{font-size:14px;font-weight:800;color:#fff}
+.panel-desc{font-size:11px;color:#c084fc;margin-top:3px;font-weight:500}
+.badge-step{font-size:10px;padding:5px 14px;border-radius:20px;background:#7c3aed;color:#fff;font-weight:700;letter-spacing:.5px}
 .panel-body{padding:1.2rem}
-.chat-area{background:#08060f;border:1px solid #2d1f5a;border-radius:8px;min-height:180px;max-height:280px;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
-.cmsg{max-width:88%}
-.cmsg.ai{align-self:flex-start}
-.cmsg.user{align-self:flex-end}
-.cwho{font-size:9px;color:#7c6aaa;margin-bottom:2px;padding:0 2px}
-.cmsg.user .cwho{text-align:right}
-.cbubble{padding:8px 12px;border-radius:8px;font-size:12px;line-height:1.6}
-.cmsg.ai .cbubble{background:#140f24;border:1px solid #3d2d7a;color:#fff}
-.cmsg.user .cbubble{background:#8b5cf6;color:#fff}
-.inp-row{display:flex;gap:8px}
-.inp-row textarea{flex:1;background:#08060f;border:1px solid #3d2d7a;border-radius:8px;color:#fff;font-family:'Sora',sans-serif;font-size:12px;padding:8px 10px;resize:none;min-height:40px;line-height:1.4;outline:none}
-.inp-row textarea:focus{border-color:#a78bfa}
-.inp-row textarea::placeholder{color:#4a3a6a}
-.send-btn{padding:0 16px;background:#8b5cf6;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;font-family:'Sora',sans-serif}
-.send-btn:hover{background:#a78bfa}
-.send-btn:disabled{opacity:.4;cursor:not-allowed}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
-.chip{font-size:10px;padding:4px 10px;border:1px solid #3d2d7a;border-radius:20px;background:transparent;cursor:pointer;color:#c4b5fd;transition:all .1s}
-.chip:hover{border-color:#a78bfa;color:#fff}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.fg{display:flex;flex-direction:column;gap:4px}
-.fg label{font-size:10px;color:#a89fc8}
-.fg input,.fg select{background:#08060f;border:1px solid #3d2d7a;border-radius:7px;color:#fff;font-family:'Sora',sans-serif;font-size:12px;padding:8px 10px;outline:none}
-.fg input:focus,.fg select:focus{border-color:#a78bfa}
-.fg input::placeholder{color:#4a3a6a}
-.fg select option{background:#0d0a18;color:#fff}
-.purple-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:#8b5cf6;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;font-family:'Sora',sans-serif;cursor:pointer;transition:all .15s;box-shadow:0 0 12px #8b5cf650}
-.purple-btn:hover{background:#a78bfa}
-.purple-btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
-.ghost-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:transparent;color:#c4b5fd;border:1px solid #3d2d7a;border-radius:8px;font-size:11px;font-family:'Sora',sans-serif;cursor:pointer;transition:all .15s}
-.ghost-btn:hover{border-color:#a78bfa;color:#fff}
-.out-box{background:#08060f;border:1px solid #2d1f5a;border-radius:8px;padding:12px;font-size:12px;color:#fff;line-height:1.8;white-space:pre-wrap;margin-top:10px;display:none}
-.out-box.show{display:block}
-.act-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.cklist{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
-.ck-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid #2d1f5a;border-radius:8px;cursor:pointer;transition:all .15s;background:#08060f}
-.ck-item:hover{border-color:#6d4daa}
-.ck-item.checked{background:#110d1e;border-color:#8b5cf6}
-.ck-box{width:18px;height:18px;border-radius:4px;border:1px solid #3d2d7a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;color:transparent}
-.ck-item.checked .ck-box{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
-.ck-text{font-size:12px;color:#fff;line-height:1.4}
-.ck-sub{font-size:10px;color:#7c6aaa;margin-top:2px}
-.celebrate{text-align:center;padding:2rem 1rem;display:none}
-.celebrate.show{display:block}
-.celebrate i{font-size:48px;color:#a78bfa;text-shadow:0 0 24px #8b5cf6}
-.celebrate h3{font-size:18px;font-weight:600;color:#fff;margin:12px 0 8px}
-.celebrate p{font-size:13px;color:#a89fc8;line-height:1.6}
-.typing-d{display:flex;gap:3px;align-items:center}
-.typing-d span{width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:td 1s infinite}
-.typing-d span:nth-child(2){animation-delay:.15s}
-.typing-d span:nth-child(3){animation-delay:.3s}
-@keyframes td{0%,80%,100%{opacity:.3}40%{opacity:1}}
-.spin{display:inline-block;width:11px;height:11px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-1px;margin-right:4px}
+
+.section-title{font-size:10px;font-weight:800;color:#c084fc;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.section-title i{font-size:15px;color:#a855f7}
+
+.tip-box{background:#2d1045;border:1.5px solid #6d28d9;border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#e9d5ff;line-height:1.7;display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.tip-box i{color:#c084fc;font-size:16px;flex-shrink:0;margin-top:1px}
+
+.prompt-box{background:#1a0d2e;border:2px solid #6d28d9;border-radius:14px;padding:14px;position:relative;margin-bottom:10px}
+.prompt-label{font-size:10px;color:#a855f7;margin-bottom:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.prompt-label i{font-size:13px}
+.prompt-text{font-size:12px;color:#e9d5ff;line-height:1.8;white-space:pre-wrap;padding-right:80px}
+.copy-btn{position:absolute;top:10px;right:10px;background:#7c3aed;border:none;border-radius:8px;padding:6px 12px;font-size:11px;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Sora',sans-serif;font-weight:700}
+.copy-btn:hover{background:#9333ea}
+.copy-btn.copied{background:#16a34a}
+
+.ai-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#7c3aed;color:#fff;border:none;border-radius:12px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;text-decoration:none;margin-bottom:12px;transition:all .2s;box-shadow:0 4px 12px #7c3aed40}
+.ai-btn:hover{background:#9333ea;transform:translateY(-1px)}
+.ai-btn i{font-size:14px}
+.ai-btn.outline{background:transparent;border:2px solid #7c3aed;color:#c084fc;box-shadow:none}
+.ai-btn.outline:hover{background:#3b1060;color:#fff}
+
+.divider{height:2px;background:#4a1d7a;margin:1.2rem 0;border-radius:2px}
+
+.result-label{font-size:12px;color:#e9d5ff;margin-bottom:8px;font-weight:600}
+.result-textarea{width:100%;background:#1a0d2e;border:2px solid #6d28d9;border-radius:12px;color:#fff;font-family:'Sora',sans-serif;font-size:12px;padding:11px 13px;resize:vertical;min-height:80px;line-height:1.6;outline:none}
+.result-textarea:focus{border-color:#a855f7}
+.result-textarea::placeholder{color:#4a1d7a}
+
+.checklist{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.ck-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:2px solid #4a1d7a;border-radius:14px;cursor:pointer;transition:all .2s;background:#1a0d2e}
+.ck-item:hover{border-color:#7c3aed;background:#2d1045}
+.ck-item.checked{background:#2d1045;border-color:#a855f7}
+.ck-box{width:22px;height:22px;border-radius:7px;border:2px solid #6d28d9;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;color:transparent;font-size:12px}
+.ck-item.checked .ck-box{background:#7c3aed;border-color:#a855f7;color:#fff}
+.ck-text{font-size:12px;color:#fff;line-height:1.4;font-weight:600}
+.ck-sub{font-size:11px;color:#9370db;margin-top:3px;font-weight:400}
+.ck-item.checked .ck-text{color:#e9d5ff}
+
+.advance-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#7c3aed;color:#fff;border:none;border-radius:14px;font-size:13px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;margin-top:10px;box-shadow:0 4px 15px #7c3aed50}
+.advance-btn:hover{background:#9333ea}
+.advance-btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.advance-btn.full{width:100%;justify-content:center}
+
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.choice-card{background:#1a0d2e;border:2px solid #4a1d7a;border-radius:16px;padding:1.2rem;cursor:pointer;text-align:center;transition:all .2s}
+.choice-card:hover{border-color:#7c3aed}
+.choice-card.selected{border-color:#a855f7;background:#3b1060}
+.choice-card i{font-size:28px;color:#a855f7;display:block;margin-bottom:10px}
+.choice-card-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:5px}
+.choice-card-desc{font-size:11px;color:#9370db;line-height:1.5}
+
+.drive-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:#052e16;border:2px solid #16a34a;color:#4ade80;border-radius:12px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;text-decoration:none;margin-bottom:14px}
+.drive-btn:hover{background:#0a4a24}
+.drive-btn i{font-size:15px}
+
+.video-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:#450a0a;border:2px solid #dc2626;color:#fca5a5;border-radius:12px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;text-decoration:none;margin-bottom:14px}
+.video-btn:hover{background:#5c0d0d}
+.video-btn i{font-size:15px}
+
+.support-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:#052e16;border:2px solid #16a34a;color:#4ade80;border-radius:12px;font-size:12px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer;text-decoration:none;margin-bottom:14px}
+.support-btn:hover{background:#0a4a24}
+.support-btn i{font-size:15px}
+
+.celebrate{text-align:center;padding:1.5rem 1rem}
+.celebrate-emoji{font-size:48px;margin-bottom:1rem;display:block}
+.celebrate h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:10px}
+.celebrate p{font-size:13px;color:#c084fc;line-height:1.7;font-weight:500;margin-bottom:1.2rem}
+
+.escala-box{background:#2d1045;border:2px solid #a855f7;border-radius:16px;padding:1.2rem;margin-top:1rem;text-align:center}
+.escala-box h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px}
+.escala-box p{font-size:12px;color:#e9d5ff;line-height:1.7;margin-bottom:12px;font-weight:500}
+
+.modal-bg{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,0,20,.9);display:none;align-items:center;justify-content:center;padding:1rem;z-index:200}
+.modal-bg.show{display:flex}
+.modal-card{background:#240d3a;border:3px solid #7c3aed;border-radius:24px;padding:2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px #7c3aed40}
+.modal-emoji{font-size:52px;margin-bottom:1rem;display:block}
+.modal-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.modal-msg{font-size:13px;color:#e9d5ff;line-height:1.8;margin-bottom:1.5rem;font-weight:500}
+.modal-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:#7c3aed;color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;font-family:'Sora',sans-serif;cursor:pointer;box-shadow:0 4px 15px #7c3aed50}
+.modal-btn:hover{background:#9333ea}
+
+.spin{display:inline-block;width:12px;height:12px;border:2px solid #ffffff44;border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-1px;margin-right:5px}
 @keyframes sp{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal-card">
+    <span class="modal-emoji" id="modal-emoji">🌟</span>
+    <div class="modal-title" id="modal-title">Etapa concluída!</div>
+    <div class="modal-msg" id="modal-msg"></div>
+    <button class="modal-btn" onclick="fecharModal()"><i class="ti ti-arrow-right"></i> Continuar jornada</button>
+  </div>
+</div>
 
 <div id="login-screen">
   <div class="login-card">
@@ -195,111 +260,367 @@ body{font-family:'Sora',sans-serif;background:#08060f;color:#fff;min-height:100v
           <div><div class="logo-text">PEX</div><div class="logo-sub">MÉTODO EXCLUSIVO</div></div>
         </div>
       </div>
-      <div class="nav-item active" onclick="goStep(0)"><i class="ti ti-compass"></i> Descoberta</div>
-      <div class="nav-item locked" id="nav1" onclick="goStep(1)"><i class="ti ti-package"></i> Produto</div>
-      <div class="nav-item locked" id="nav2" onclick="goStep(2)"><i class="ti ti-pencil"></i> Conteúdo</div>
-      <div class="nav-item locked" id="nav3" onclick="goStep(3)"><i class="ti ti-layout"></i> Página</div>
-      <div class="nav-item locked" id="nav4" onclick="goStep(4)"><i class="ti ti-trophy"></i> 1ª Venda</div>
-      <div class="logout-btn" onclick="doLogout()"><i class="ti ti-logout"></i> Sair</div>
+      <div class="nav-section">Jornada</div>
+      <div class="nav-item active" id="nav0" onclick="goStep(0)"><i class="ti ti-compass"></i> Descoberta</div>
+      <div class="nav-item locked" id="nav1" onclick="goStep(1)"><i class="ti ti-sparkles"></i> Ativando o Seu PEX <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav2" onclick="goStep(2)"><i class="ti ti-device-laptop"></i> Plataforma <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav3" onclick="goStep(3)"><i class="ti ti-layout"></i> Página de Vendas <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav4" onclick="goStep(4)"><i class="ti ti-brand-instagram"></i> Instagram <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav5" onclick="goStep(5)"><i class="ti ti-photo"></i> Criativos <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav6" onclick="goStep(6)"><i class="ti ti-speakerphone"></i> Anúncios <i class="ti ti-lock lock-icon"></i></div>
+      <div class="nav-item locked" id="nav7" onclick="goStep(7)"><i class="ti ti-trophy"></i> 1ª Venda <i class="ti ti-lock lock-icon"></i></div>
+      <div class="resources-section">
+        <div class="res-title">Recursos</div>
+        <a href="https://members.kiwify.com/90135ac0-3889-486c-807f-497a7efe77e1/6d1a005a-3665-4674-b7e7-3a63ef4128f8/c7c87adc-5829-4baa-90e5-806dee211415?club=ceb3ac42-ccb6-42e5-8101-2747ad34df7a" target="_blank" class="res-btn"><i class="ti ti-video"></i> Aulas ao Vivo</a>
+        <a href="https://chat.whatsapp.com/KpJbQJH7mXZ1V2rQQIsFFR" target="_blank" class="res-btn"><i class="ti ti-brand-whatsapp"></i> Grupo de Avisos</a>
+        <a id="calc-btn" class="res-btn locked-res"><i class="ti ti-calculator"></i> Calculadora de Tráfego <i class="ti ti-lock" style="font-size:11px;margin-left:auto"></i></a>
+        <a href="https://wa.me/5511972942637" target="_blank" class="res-btn"><i class="ti ti-headset"></i> Suporte PEX</a>
+        <div class="logout-btn" onclick="doLogout()"><i class="ti ti-logout"></i> Sair da conta</div>
+      </div>
     </div>
+
     <div class="main">
       <div class="topbar">
         <div>
           <div class="page-title" id="page-title">Descoberta</div>
-          <div class="page-sub">Visão geral da sua jornada PEX</div>
+          <div class="page-sub">Sua jornada do zero à primeira venda 🚀</div>
         </div>
         <div class="topbar-right">
-          <div class="save-indicator" id="save-indicator"><i class="ti ti-cloud"></i> <span id="save-txt">salvo</span></div>
-          <div class="user-email" id="user-email"></div>
-          <div class="avatar" id="user-avatar">A</div>
+          <div class="prog-txt" id="prog-txt">Etapa 1 de 8</div>
+          <div class="avatar" id="user-avatar">LL</div>
         </div>
       </div>
-      <div class="content">
-        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar" style="width:20%"></div></div>
+
+      <div class="content" id="content-area">
+        <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar" style="width:12%"></div></div>
+
         <div class="steps-row">
-          <div class="step-item active" id="stab0" onclick="goStep(0)"><div class="step-dot" id="sdot0">1</div><div class="step-name">Descoberta</div></div>
-          <div class="step-item locked" id="stab1" onclick="goStep(1)"><div class="step-dot" id="sdot1">2</div><div class="step-name">Produto</div></div>
-          <div class="step-item locked" id="stab2" onclick="goStep(2)"><div class="step-dot" id="sdot2">3</div><div class="step-name">Conteúdo</div></div>
-          <div class="step-item locked" id="stab3" onclick="goStep(3)"><div class="step-dot" id="sdot3">4</div><div class="step-name">Página</div></div>
-          <div class="step-item locked" id="stab4" onclick="goStep(4)"><div class="step-dot" id="sdot4">5</div><div class="step-name">1ª Venda</div></div>
+          <div class="step-pill active" id="stab0" onclick="goStep(0)"><div class="step-dot" id="sdot0">1</div><div class="step-name">Descoberta</div></div>
+          <div class="step-pill locked" id="stab1" onclick="goStep(1)"><div class="step-dot" id="sdot1">🔒</div><div class="step-name">Ativando</div></div>
+          <div class="step-pill locked" id="stab2" onclick="goStep(2)"><div class="step-dot" id="sdot2">🔒</div><div class="step-name">Plataforma</div></div>
+          <div class="step-pill locked" id="stab3" onclick="goStep(3)"><div class="step-dot" id="sdot3">🔒</div><div class="step-name">Página</div></div>
+          <div class="step-pill locked" id="stab4" onclick="goStep(4)"><div class="step-dot" id="sdot4">🔒</div><div class="step-name">Instagram</div></div>
+          <div class="step-pill locked" id="stab5" onclick="goStep(5)"><div class="step-dot" id="sdot5">🔒</div><div class="step-name">Criativos</div></div>
+          <div class="step-pill locked" id="stab6" onclick="goStep(6)"><div class="step-dot" id="sdot6">🔒</div><div class="step-name">Anúncios</div></div>
+          <div class="step-pill locked" id="stab7" onclick="goStep(7)"><div class="step-dot" id="sdot7">🔒</div><div class="step-name">1ª Venda</div></div>
         </div>
-        <div class="hero">
-          <div class="hero-text"><h2>Bem-vinda ao Método PEX</h2><p>Sua jornada do zero à primeira venda. Siga cada etapa com a PEX IA ao seu lado.</p></div>
-          <div class="hero-gem">◆</div>
-        </div>
+
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-label"><i class="ti ti-clock"></i> Etapa atual</div><div class="stat-val" id="stat-etapa">1</div><div class="stat-sub">de 5 etapas</div></div>
-          <div class="stat-card"><div class="stat-label"><i class="ti ti-check"></i> Concluídas</div><div class="stat-val" id="stat-done">0</div><div class="stat-sub">etapas completas</div></div>
-          <div class="stat-card"><div class="stat-label"><i class="ti ti-chart-line"></i> Progresso</div><div class="stat-val" id="stat-pct">20%</div><div class="stat-sub">da jornada</div></div>
+          <div class="stat-card"><div class="stat-icon purple"><i class="ti ti-clock"></i></div><div class="stat-val" id="stat-etapa">1</div><div class="stat-label">etapa atual</div></div>
+          <div class="stat-card"><div class="stat-icon green"><i class="ti ti-check"></i></div><div class="stat-val" id="stat-done">0</div><div class="stat-label">concluídas</div></div>
+          <div class="stat-card"><div class="stat-icon blue"><i class="ti ti-chart-line"></i></div><div class="stat-val" id="stat-pct">12%</div><div class="stat-label">progresso</div></div>
         </div>
 
-        <div class="panel" id="panel0">
-          <div class="panel-head"><div class="panel-head-left"><div class="panel-icon"><i class="ti ti-compass"></i></div><div><div class="panel-title">Descoberta — no que sou boa?</div><div class="panel-desc">Vamos encontrar seu nicho e o produto ideal a partir da sua história.</div></div></div><div class="badge-step">Etapa 1</div></div>
-          <div class="panel-body">
-            <div class="chips">
-              <span class="chip" onclick="sc(0,'Não sei no que sou boa. Me ajuda a descobrir meu nicho.')">Não sei meu nicho</span>
-              <span class="chip" onclick="sc(0,'Sou mãe e organizo tudo em casa. Isso serve como produto?')">Sou mãe</span>
-              <span class="chip" onclick="sc(0,'Trabalho na área de saúde. Que produto posso criar?')">Área de saúde</span>
-              <span class="chip" onclick="sc(0,'Tenho habilidade com artesanato e decoração.')">Artesanato</span>
-              <span class="chip" onclick="sc(0,'Não tenho nada de especial pra ensinar.')">Não tenho nada</span>
+        <div id="panel0">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big pink"><i class="ti ti-compass"></i></div><div><div class="panel-title">Descoberta — Encontrando o Seu PEX</div><div class="panel-desc">Toda mulher tem algo de valor pra ensinar. Vamos encontrar o seu! ✨</div></div></div><div class="badge-step">Etapa 1</div></div>
+            <div class="panel-body">
+              <div class="section-title"><i class="ti ti-clipboard-text"></i> 1. Copie o prompt e cole na PEX IA</div>
+              <div class="tip-box"><i class="ti ti-bulb"></i> A PEX IA vai te fazer perguntas sobre sua vida uma de cada vez. Responda com honestidade — quanto mais você contar, mais personalizado vai ser o seu produto!</div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para copiar</div>
+                <div class="prompt-text" id="p0">Quero descobrir qual é o meu nicho e criar o meu produto digital exclusivo. Para isso, preciso que você me faça perguntas estratégicas sobre a minha vida, minhas experiências, minhas habilidades e o que as pessoas costumam me pedir ajuda ou conselho.
+
+Faça as perguntas uma de cada vez, de forma acolhedora e sem julgamento. Não me dê as respostas antes de eu responder — deixa eu falar primeiro.
+
+Após eu responder todas as perguntas, me apresente:
+1. Meu nicho ideal com uma descrição clara de quem é minha cliente
+2. O perfil completo da minha cliente ideal: quem ela é hoje, quais são as dores que ela sente, quais são os sonhos dela e qual é a situação em que ela se encontra
+3. Três ideias de produto digital com: nome sugerido, formato (e-book, curso gravado, planilha, pack de templates etc), faixa de preço sugerida e por que esse produto faz sentido pra minha história e nicho
+
+Seja específica. Use tudo que eu te contar pra personalizar as sugestões. Nada genérico — quero sentir que esse produto é meu de verdade.</div>
+                <button class="copy-btn" id="cb0" onclick="copyP('p0','cb0')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="section-title"><i class="ti ti-arrow-down"></i> 2. Cole aqui o resultado</div>
+              <div class="result-label">Cole o nicho e as ideias de produto que a PEX IA te sugeriu:</div>
+              <textarea class="result-textarea" id="r0" placeholder="Ex: Meu nicho é organização para mães..." oninput="checkAdv(0)"></textarea>
+              <div class="divider"></div>
+              <div class="section-title"><i class="ti ti-checks"></i> 3. Checklist da etapa</div>
+              <div class="checklist">
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Descobri meu nicho 🎯</div><div class="ck-sub">Sei exatamente para quem vou vender</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Defini o formato do meu produto 📦</div><div class="ck-sub">E-book, curso, planilha, pack de templates...</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Entendo quem é minha cliente ideal 💜</div><div class="ck-sub">Conheço as dores e os sonhos dela</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv0" onclick="advance(0)" disabled><i class="ti ti-arrow-right"></i> Descobri meu PEX — avançar!</button>
             </div>
-            <div class="chat-area" id="chat0"></div>
-            <div class="inp-row" style="margin-bottom:10px"><textarea id="inp0" placeholder="Conta sobre você, sua vida, o que as pessoas te pedem conselho..." rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send(0)}"></textarea><button class="send-btn" id="sb0" onclick="send(0)">Enviar</button></div>
-            <button class="purple-btn" onclick="complete(0)"><i class="ti ti-arrow-right"></i> Descobri meu nicho — avançar</button>
           </div>
         </div>
 
-        <div class="panel" id="panel1" style="display:none">
-          <div class="panel-head"><div class="panel-head-left"><div class="panel-icon"><i class="ti ti-package"></i></div><div><div class="panel-title">Produto — estrutura e formato</div><div class="panel-desc">A IA monta a estrutura completa do seu produto em segundos.</div></div></div><div class="badge-step">Etapa 2</div></div>
-          <div class="panel-body">
-            <div class="fgrid"><div class="fg"><label>Meu nicho / tema</label><input id="p-nicho" placeholder="Ex: organização para mães" /></div><div class="fg"><label>Formato</label><select id="p-fmt"><option>E-book</option><option>Mini curso (módulos)</option><option>Planilha + guia</option><option>Pack de templates</option><option>Masterclass</option></select></div></div>
-            <div class="fg" style="margin-bottom:10px"><label>Problema que resolve</label><input id="p-prob" placeholder="Ex: mães que não conseguem manter a casa organizada" /></div>
-            <button class="purple-btn" id="btn-est" onclick="gerarEstrutura()"><i class="ti ti-wand"></i> Gerar estrutura do produto</button>
-            <div class="out-box" id="out-est"></div>
-            <div class="act-row" id="act-est" style="display:none"><button class="ghost-btn" onclick="cp('out-est')"><i class="ti ti-copy"></i> Copiar</button><button class="purple-btn" onclick="complete(1)"><i class="ti ti-arrow-right"></i> Produto definido — avançar</button></div>
-          </div>
-        </div>
+        <div id="panel1" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big blue"><i class="ti ti-sparkles"></i></div><div><div class="panel-title">Ativando o Seu PEX — Criando Seu Produto</div><div class="panel-desc">Estrutura, conteúdo, bônus e nome. Seu produto saindo do forno! 🔥</div></div></div><div class="badge-step">Etapa 2</div></div>
+            <div class="panel-body">
+              <div class="tip-box"><i class="ti ti-bulb"></i> Antes de colar, compartilhe com a PEX IA o nicho e a ideia de produto da etapa anterior.</div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para copiar</div>
+                <div class="prompt-text" id="p1">Com base no nicho e no produto que definimos juntas, preciso que você crie a estrutura completa do meu produto digital.
 
-        <div class="panel" id="panel2" style="display:none">
-          <div class="panel-head"><div class="panel-head-left"><div class="panel-icon"><i class="ti ti-pencil"></i></div><div><div class="panel-title">Conteúdo — escrever com IA</div><div class="panel-desc">Capítulo por capítulo, módulo por módulo. A IA escreve, você revisa.</div></div></div><div class="badge-step">Etapa 3</div></div>
-          <div class="panel-body">
-            <div class="chips">
-              <span class="chip" onclick="sc(2,'Escreve o capítulo 1 de introdução do meu produto')">Capítulo 1</span>
-              <span class="chip" onclick="sc(2,'Cria o roteiro completo do módulo 1')">Módulo 1</span>
-              <span class="chip" onclick="sc(2,'Que bônus posso adicionar pra aumentar o valor percebido?')">Ideias de bônus</span>
-              <span class="chip" onclick="sc(2,'Me sugere um nome impactante pro meu produto')">Nome do produto</span>
+Me entregue tudo isso em ordem:
+
+1. TÍTULO DO PRODUTO — um nome impactante que comunica a transformação, não o processo. Máximo 6 palavras.
+
+2. SUBTÍTULO — complementa o título deixando claro o resultado e para quem é. Máximo 15 palavras.
+
+3. PARA QUEM É — descrição da minha cliente ideal em 3 linhas: quem ela é hoje, o que ela sente e o que ela quer alcançar.
+
+4. ESTRUTURA COMPLETA DE CONTEÚDO:
+   - Se for e-book: todos os capítulos com título e o que será ensinado em cada um (mínimo 5 capítulos)
+   - Se for curso gravado: todos os módulos com título, descrição e lista de aulas de cada módulo (mínimo 4 módulos)
+   - Se for planilha ou template: todas as abas ou seções com nome e descrição do que cada uma resolve
+
+5. DOIS BÔNUS ESTRATÉGICOS — cada um com nome, formato e descrição de como complementa o produto principal
+
+6. FRASE DE TRANSFORMAÇÃO — em uma única frase poderosa, o que muda na vida da minha cliente depois de usar esse produto
+
+Seja específica e use a linguagem que minha cliente usa no dia a dia. Nada genérico.</div>
+                <button class="copy-btn" id="cb1" onclick="copyP('p1','cb1')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="result-label">Cole aqui a estrutura do produto:</div>
+              <textarea class="result-textarea" id="r1" placeholder="Ex: Título: Rotina que Funciona..." oninput="checkAdv(1)"></textarea>
+              <div class="divider"></div>
+              <div class="checklist">
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Título e subtítulo definidos ✍️</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Estrutura completa do produto criada 📋</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Conteúdo escrito com a PEX IA 🤖</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Dois bônus definidos 🎁</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Produto diagramado ou gravado 🎨</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv1" onclick="advance(1)" disabled><i class="ti ti-arrow-right"></i> Produto pronto — avançar!</button>
             </div>
-            <div class="chat-area" id="chat2"></div>
-            <div class="inp-row" style="margin-bottom:10px"><textarea id="inp2" placeholder="Ex: Escreve o capítulo 1 sobre como organizar a rotina..." rows="2" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();send(2)}"></textarea><button class="send-btn" id="sb2" onclick="send(2)">Enviar</button></div>
-            <button class="purple-btn" onclick="complete(2)"><i class="ti ti-arrow-right"></i> Conteúdo criado — avançar</button>
           </div>
         </div>
 
-        <div class="panel" id="panel3" style="display:none">
-          <div class="panel-head"><div class="panel-head-left"><div class="panel-icon"><i class="ti ti-layout"></i></div><div><div class="panel-title">Página de vendas — copy pronta</div><div class="panel-desc">Sem Elementor. Sem WordPress. Copy completa pra colar no Kiwify.</div></div></div><div class="badge-step">Etapa 4</div></div>
-          <div class="panel-body">
-            <div class="fgrid"><div class="fg"><label>Nome do produto</label><input id="pg-nome" placeholder="Ex: Método Mãe Organizada" /></div><div class="fg"><label>Preço</label><input id="pg-preco" placeholder="Ex: R$ 47" /></div></div>
-            <div class="fg" style="margin-bottom:8px"><label>Para quem é</label><input id="pg-pub" placeholder="Ex: Mães que não conseguem se organizar em casa" /></div>
-            <div class="fg" style="margin-bottom:10px"><label>Resultado que ela vai ter</label><input id="pg-res" placeholder="Ex: Casa organizada em 30 dias" /></div>
-            <button class="purple-btn" id="btn-pg" onclick="gerarPagina()"><i class="ti ti-wand"></i> Gerar página de vendas</button>
-            <div class="out-box" id="out-pg"></div>
-            <div class="act-row" id="act-pg" style="display:none"><button class="ghost-btn" onclick="cp('out-pg')"><i class="ti ti-copy"></i> Copiar copy</button><button class="purple-btn" onclick="complete(3)"><i class="ti ti-arrow-right"></i> Página pronta — última etapa</button></div>
-          </div>
-        </div>
+        <div id="panel2" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big green"><i class="ti ti-device-laptop"></i></div><div><div class="panel-title">Plataforma — Subindo e Configurando Tudo</div><div class="panel-desc">Produto no ar, checkout pronto, área de membros configurada! 💎</div></div></div><div class="badge-step">Etapa 3</div></div>
+            <div class="panel-body">
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para copiar</div>
+                <div class="prompt-text" id="p2">Meu produto está estruturado e agora preciso subir na plataforma de vendas. Me ajuda a preparar tudo que preciso antes de cadastrar.
 
-        <div class="panel" id="panel4" style="display:none">
-          <div class="panel-head"><div class="panel-head-left"><div class="panel-icon"><i class="ti ti-trophy"></i></div><div><div class="panel-title">Primeira venda — checklist de lançamento</div><div class="panel-desc">Complete cada item e faça sua primeira venda nos próximos 7 dias.</div></div></div><div class="badge-step">Etapa 5</div></div>
-          <div class="panel-body">
-            <div class="cklist" id="cklist">
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Produto cadastrado na Kiwify</div><div class="ck-sub">Nome, descrição, preço e imagem de capa</div></div></div>
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Página de vendas publicada</div><div class="ck-sub">Copy gerada colada e configurada na Kiwify</div></div></div>
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Post de lançamento no Instagram</div><div class="ck-sub">Story + post no feed anunciando o produto</div></div></div>
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Mensagem enviada no WhatsApp</div><div class="ck-sub">Para contatos próximos e grupos relevantes</div></div></div>
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Programa de afiliados ativado</div><div class="ck-sub">Configurar na Kiwify e compartilhar o link</div></div></div>
-              <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check" style="font-size:11px"></i></div><div><div class="ck-text">Primeiro anúncio no Meta Ads</div><div class="ck-sub">Campanha simples com o criativo do produto</div></div></div>
+Me entregue:
+
+1. DESCRIÇÃO DO PRODUTO — texto completo para usar na página de cadastro. Persuasivo, claro, focado na transformação. 150 a 200 palavras.
+
+2. DESCRIÇÃO CURTA — versão resumida em até 30 palavras.
+
+3. PRECIFICAÇÃO ESTRATÉGICA — preço principal recomendado, opção parcelada e justificativa.
+
+4. ORDER BUMP — produto complementar simples para aumentar o ticket médio, com nome, descrição e preço sugerido.
+
+5. NOME DA ÁREA DE MEMBROS — 3 opções de nome que transmitam exclusividade.
+
+Use tudo que sabe sobre o meu produto e minha cliente para personalizar cada resposta.</div>
+                <button class="copy-btn" id="cb2" onclick="copyP('p2','cb2')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="section-title"><i class="ti ti-credit-card"></i> Configure o checkout personalizado</div>
+              <div class="tip-box"><i class="ti ti-bulb"></i> Após cadastrar o produto, use a IA de Checkout para montar um checkout que converte!</div>
+              <a href="https://chatgpt.com/g/g-6a1ccd39de008191b81d521ac99bf0d8-designer-de-checkout-pex" target="_blank" class="ai-btn outline"><i class="ti ti-external-link"></i> Abrir IA de Checkout Personalizado</a>
+              <div class="divider"></div>
+              <div class="checklist">
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Produto cadastrado na plataforma 🏪</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Checkout personalizado configurado 💳</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Order Bump ativado 💰</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Área de membros configurada 🏠</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Produto e bônus publicados 📚</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Programa de afiliados ativado 🤝</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv2" onclick="advance(2)"><i class="ti ti-arrow-right"></i> Plataforma pronta — avançar!</button>
             </div>
-            <button class="purple-btn" id="final-btn" onclick="finalizar()" disabled style="width:100%;justify-content:center"><i class="ti ti-trophy"></i> Registrar minha primeira venda!</button>
-            <div class="celebrate" id="celebrate"><i class="ti ti-trophy"></i><h3>Parabéns! Você completou a jornada PEX.</h3><p>Produto criado, página no ar, estratégia de lançamento pronta.<br>Agora é executar. Vai lá — a primeira venda está chegando.</p></div>
+          </div>
+        </div>
+
+        <div id="panel3" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big orange"><i class="ti ti-layout"></i></div><div><div class="panel-title">Página de Vendas — Copy que Converte</div><div class="panel-desc">Opcional — para quem vai ter página além do checkout 📄</div></div></div><div class="badge-step">Etapa 4</div></div>
+            <div class="panel-body">
+              <div class="section-title"><i class="ti ti-route"></i> Qual caminho você vai seguir?</div>
+              <div class="choice-grid">
+                <div class="choice-card" id="ch-sim" onclick="escolherPagina(true)"><i class="ti ti-layout"></i><div class="choice-card-title">Quero ter página de vendas</div><div class="choice-card-desc">Vou criar uma página completa além do checkout</div></div>
+                <div class="choice-card" id="ch-nao" onclick="escolherPagina(false)"><i class="ti ti-credit-card"></i><div class="choice-card-title">Só o checkout por agora</div><div class="choice-card-desc">Vou usar apenas o checkout personalizado</div></div>
+              </div>
+              <div id="pag-content" style="display:none">
+                <div class="prompt-box">
+                  <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para copiar</div>
+                  <div class="prompt-text" id="p3">Preciso que você escreva a copy completa da minha página de vendas. Use tudo que sabe sobre o meu produto, minha cliente ideal e o resultado que entrego.
+
+Escreva em ordem:
+
+1. HEADLINE PRINCIPAL — máximo 12 palavras, deve parar o scroll.
+2. SUBHEADLINE — máximo 20 palavras.
+3. BLOCO DE IDENTIFICAÇÃO — "Esse produto é pra você se..." com 6 situações reais.
+4. BLOCO DE SONHO — "Imagina como seria..." com 4 cenários positivos.
+5. O QUE VOCÊ VAI TER — lista com 7 a 9 benefícios concretos.
+6. CONTEÚDO DO PRODUTO — produto principal + bônus, cada um com nome e descrição.
+7. POR QUE FUNCIONA — parágrafo de 4 a 5 linhas.
+8. GARANTIA — texto de suporte com garantia de 7 dias.
+9. CTA FINAL — chamada urgente, direta e empática, com o preço.
+
+Tom: próximo, direto, foco na transformação real.</div>
+                  <button class="copy-btn" id="cb3" onclick="copyP('p3','cb3')"><i class="ti ti-copy"></i> Copiar</button>
+                </div>
+                <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+                <textarea class="result-textarea" id="r3" placeholder="Cole aqui a copy da página gerada pela PEX IA..." oninput="checkAdv(3)" style="margin-top:10px"></textarea>
+              </div>
+              <div class="divider"></div>
+              <div class="checklist">
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Decidi meu caminho 🛣️</div></div></div>
+                <div class="ck-item pagina-ck" onclick="ck(this)" style="display:none"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Copy criada com a PEX IA ✍️</div></div></div>
+                <div class="ck-item pagina-ck" onclick="ck(this)" style="display:none"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Página publicada e no ar 🚀</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv3" onclick="advance(3)"><i class="ti ti-arrow-right"></i> Avançar para o Instagram!</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel4" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big red"><i class="ti ti-brand-instagram"></i></div><div><div class="panel-title">Instagram — A Sua Vitrine Digital</div><div class="panel-desc">Mínimo 9 conteúdos no feed antes de rodar anúncio 📱</div></div></div><div class="badge-step">Etapa 5</div></div>
+            <div class="panel-body">
+              <div class="tip-box"><i class="ti ti-bulb"></i> A regra é clara: mínimo 9 conteúdos no feed antes de rodar qualquer anúncio!</div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para copiar</div>
+                <div class="prompt-text" id="p4">Preciso estruturar meu Instagram para vender meu produto digital.
+
+Me entregue:
+
+1. BIO OTIMIZADA — máximo 150 caracteres, com emojis e chamada para ação.
+2. NOME DE USUÁRIO E PERFIL — sugestões para ser encontrada no nicho.
+3. LINK NA BIO — recomendação certa para o meu momento.
+4. PLANO DE 9 CONTEÚDOS PARA O FEED — para cada post: tipo, tema, objetivo estratégico e primeira linha da legenda.
+5. ESTRATÉGIA DE STORIES — como aquecer a audiência nos primeiros 7 dias.
+
+Os conteúdos devem ser variados e mostrar diferentes faces do meu nicho. Nada genérico.</div>
+                <button class="copy-btn" id="cb4" onclick="copyP('p4','cb4')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="checklist">
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Bio do Instagram otimizada ✨</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Foto de perfil profissional 📸</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">1º conteúdo publicado 1️⃣</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">3 conteúdos publicados 3️⃣</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">6 conteúdos publicados 6️⃣</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">9 conteúdos publicados ✅ Pronta!</div></div></div>
+                <div class="ck-item" onclick="ck(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Stories de aquecimento publicados 🔥</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv4" onclick="advance(4)"><i class="ti ti-arrow-right"></i> Instagram pronto — avançar!</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel5" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big purple"><i class="ti ti-photo"></i></div><div><div class="panel-title">Criativos — Imagens e Vídeos que Vendem</div><div class="panel-desc">Criativos que param o scroll e levam sua cliente ao checkout 🎬</div></div></div><div class="badge-step">Etapa 6</div></div>
+            <div class="panel-body">
+              <div class="section-title"><i class="ti ti-clipboard-text"></i> Criativo estático (imagem)</div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para imagem</div>
+                <div class="prompt-text" id="p5a">Preciso criar criativos estáticos para anúncios no Meta Ads.
+
+Me entregue 3 opções, cada uma com: conceito visual, headline (máximo 6 palavras), texto de apoio (máximo 10 palavras), CTA e paleta de cores.
+
+As 3 opções devem ser diferentes: uma focada na dor, uma no sonho e uma na prova/credibilidade.</div>
+                <button class="copy-btn" id="cb5a" onclick="copyP('p5a','cb5a')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="section-title" style="margin-top:8px"><i class="ti ti-video"></i> Criativo em vídeo (roteiro)</div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para vídeo</div>
+                <div class="prompt-text" id="p5b">Preciso de um roteiro de vídeo de 15 a 30 segundos para anúncio.
+
+Me entregue 2 opções com: gancho (3 primeiros segundos), desenvolvimento, CTA final, legenda do anúncio e sugestão de música.
+
+Uma opção mais emocional/storytelling, a outra mais direta/informativa.</div>
+                <button class="copy-btn" id="cb5b" onclick="copyP('p5b','cb5b')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="tip-box"><i class="ti ti-bulb"></i> Para avançar, marque no mínimo 6 itens do checklist abaixo.</div>
+              <div class="checklist" id="ck-criativos">
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Roteiros criados com a PEX IA 📝</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Criativo estático feito no Canva 🖼️</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Vídeo criativo gravado e editado 🎥</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Pelo menos 2 criativos prontos pra testar 🚀</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Legendas dos anúncios escritas ✍️</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkCriativos()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Paleta de cores definida 🎨</div></div></div>
+              </div>
+              <button class="advance-btn" id="adv5" onclick="advance(5)" disabled><i class="ti ti-arrow-right"></i> Criativos prontos — avançar!</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel6" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big yellow"><i class="ti ti-speakerphone"></i></div><div><div class="panel-title">Anúncios — Bora Vender Igual Gente Grande!</div><div class="panel-desc">Estrutura de campanha, copy dos anúncios e primeiro anúncio no ar 🎯</div></div></div><div class="badge-step">Etapa 7</div></div>
+            <div class="panel-body">
+              <div class="section-title"><i class="ti ti-file-download"></i> 1. Material de campanha</div>
+              <div class="tip-box"><i class="ti ti-bulb"></i> Esse material é atualizado regularmente pela Laura. Sempre que acessar você terá a versão mais recente!</div>
+              <a href="https://drive.google.com/drive/folders/1iDOgVXPBOXJxsrT42u6wCb4uDe-QF3vc?usp=sharing" target="_blank" class="drive-btn"><i class="ti ti-folder"></i> Acessar material de campanha</a>
+              <div class="divider"></div>
+              <div class="prompt-box">
+                <div class="prompt-label"><i class="ti ti-sparkles"></i> Prompt para anúncios</div>
+                <div class="prompt-text" id="p6">Meus criativos estão prontos e quero subir meu primeiro anúncio no Meta Ads.
+
+Me entregue:
+
+1. COPY DO ANÚNCIO — 3 versões (foco na dor, foco no sonho, foco na prova), cada uma com texto principal, headline (máximo 6 palavras) e descrição (máximo 15 palavras).
+
+2. PÚBLICO-ALVO — pelo menos 8 interesses específicos, faixa etária, gênero e localização.
+
+3. ESTRATÉGIA DE TESTE A/B — como testar nos primeiros 7 dias.
+
+4. ORÇAMENTO INICIAL — sugestão diária com justificativa.
+
+5. MÉTRICAS PARA ACOMPANHAR — o que olhar nas primeiras 24h.
+
+Seja prática e direta.</div>
+                <button class="copy-btn" id="cb6" onclick="copyP('p6','cb6')"><i class="ti ti-copy"></i> Copiar</button>
+              </div>
+              <a href="https://chatgpt.com/g/g-693dc3e18bb881919290801d37b70d75-pexia" target="_blank" class="ai-btn"><i class="ti ti-external-link"></i> Abrir PEX IA</a>
+              <div class="divider"></div>
+              <div class="checklist" id="ck-final">
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Gerenciador de Anúncios configurado ⚙️</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Pixel instalado 🔍</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Copy dos anúncios criada ✍️</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Campanha criada no Gerenciador 📊</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Primeiro anúncio no ar! 🚀</div></div></div>
+                <div class="ck-item" onclick="ck(this);checkFinal()"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Primeiras 24h analisadas 📈</div></div></div>
+              </div>
+              <button class="advance-btn full" id="adv6" onclick="advance(6)" disabled><i class="ti ti-arrow-right"></i> Anúncio no ar — avançar!</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel7" style="display:none">
+          <div class="panel">
+            <div class="panel-head"><div class="panel-head-left"><div class="panel-icon-big gold"><i class="ti ti-trophy"></i></div><div><div class="panel-title">Primeira Venda — Você Conseguiu! 🎉</div><div class="panel-desc">Esse momento merece ser comemorado.</div></div></div><div class="badge-step">Etapa 8</div></div>
+            <div class="panel-body">
+              <div class="checklist">
+                <div class="ck-item" id="ck-primeira-venda" onclick="marcarPrimeiraVenda(this)"><div class="ck-box"><i class="ti ti-check"></i></div><div><div class="ck-text">Fiz minha primeira venda! 💰</div><div class="ck-sub">Marque aqui quando isso acontecer</div></div></div>
+              </div>
+
+              <div id="venda-content" style="display:none">
+                <div class="tip-box"><i class="ti ti-heart"></i> Parabéns de verdade. Esse momento é seu — você correu atrás, executou e chegou até aqui. Quero comemorar com você!</div>
+                <a href="https://www.youtube.com/" target="_blank" class="video-btn"><i class="ti ti-player-play"></i> Assistir vídeo da Laura parabenizando você</a>
+                <div class="divider"></div>
+                <div class="section-title"><i class="ti ti-camera"></i> Compartilhe sua conquista</div>
+                <div class="tip-box"><i class="ti ti-bulb"></i> Manda um print da sua venda e, se quiser, um depoimento. Isso me ajuda demais e inspira outras alunas!</div>
+                <a href="https://wa.me/5511972942637" target="_blank" class="support-btn"><i class="ti ti-brand-whatsapp"></i> Enviar print e depoimento no suporte</a>
+
+                <div class="escala-box">
+                  <h4>🚀 Agora é hora de escalar!</h4>
+                  <p>Você já fez sua primeira venda — e isso muda tudo. Agora o jogo é sobre repetir o que funcionou e crescer com consistência. Preparei um material completo te ensinando como escalar suas vendas a partir daqui.</p>
+                  <a href="https://drive.google.com/drive/folders/1E_xhgNAq-OgZNCL27Vanfq0Bx4ADTxPu?usp=drive_link" target="_blank" class="drive-btn" style="margin-bottom:0"><i class="ti ti-trending-up"></i> Acessar material de escala</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -310,289 +631,193 @@ body{font-family:'Sora',sans-serif;background:#08060f;color:#fff;min-height:100v
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://sqwcspyvnpwuirsiprak.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxd2NzcHl2bnB3dWlyc2lwcmFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNzIwODYsImV4cCI6MjA5NTg0ODA4Nn0.RiTPQdsV84uiFm1Uj-McyjbvYPVcHhj3FcdUKbpsE2A';
-const PROXY = 'https://empty-water-ab3d.adslauralima.workers.dev';
-const SB = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_URL='https://sqwcspyvnpwuirsiprak.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxd2NzcHl2bnB3dWlyc2lwcmFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNzIwODYsImV4cCI6MjA5NTg0ODA4Nn0.RiTPQdsV84uiFm1Uj-McyjbvYPVcHhj3FcdUKbpsE2A';
+const SB=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-const SYS = `Você é a PEX IA — assistente do Método PEX criada por Laura Lima (@lauralima.mentora). Tom: direto, prático, acolhedor, sem enrolação. Fala como a Laura: vai ao ponto, sem linguagem difícil. ACREDITA que toda mulher tem algo valioso pra ensinar. Quando a aluna disser que não tem nada, descobre o que ela sabe pela vida que levou. Sugere 3 ideias concretas de produto com formato e preço. Respostas em português, máximo 200 palavras, conversacional.`;
+const NAMES=['Descoberta','Ativando o Seu PEX','Plataforma','Página de Vendas','Instagram','Criativos','Anúncios','Primeira Venda'];
+const TOTAL=8;
+const UNL=[0];
+let CUR=0;
+let UID=null;
 
-const H = {0:[], 2:[]};
-const UNL = [0];
-let CUR = 0;
-let UID = null;
-let saveTimer = null;
-const NAMES = ['Descoberta','Produto','Conteúdo','Página de Vendas','Primeira Venda'];
+const MOTIVACIONAL=[
+  {emoji:'🌟',title:'Você encontrou o seu ouro!',msg:'Descobrir o seu nicho é o passo mais importante — e você acabou de dar ele. Muita gente nem chega aqui porque trava na dúvida. Você não travou! Segue em frente, porque o próximo passo é criar o produto que vai transformar a vida de outras mulheres — e a sua também. 💜'},
+  {emoji:'🎨',title:'Seu produto existe!',msg:'Você saiu do "tenho uma ideia" pro "tenho um produto". Isso é enorme! Cada capítulo, cada módulo, cada bônus que você estruturou representa horas que outras mulheres não vão perder errando. Você está entregando atalhos. Continue com esse mesmo gás! 🚀'},
+  {emoji:'💎',title:'Produto no ar!',msg:'Produto cadastrado, checkout pronto e área de membros configurada. Você tem uma loja aberta! Qualquer pessoa que encontrar o seu produto agora pode comprar. Isso é real, isso é seu. Orgulho de você! 🔥'},
+  {emoji:'✍️',title:'Sua copy está pronta!',msg:'Escrever pra vender é uma das habilidades mais valiosas do mercado digital — e você acabou de fazer isso! Cada palavra foi pensada pra falar direto com a sua cliente. Quando ela ler vai pensar: isso foi feito pra mim. 📱'},
+  {emoji:'📱',title:'Instagram no ponto!',msg:'Bio otimizada, 9 conteúdos no feed, stories de aquecimento. Você não está mais invisível — você está posicionada! Quando o anúncio rodar, sua cliente vai chegar no perfil e pensar: essa mulher é referência. 🎬'},
+  {emoji:'🎬',title:'Criativos prontos!',msg:'Você acabou de criar os ativos mais importantes da sua campanha. Um bom criativo é o que faz uma pessoa parar o scroll e prestar atenção em você. Os seus estão prontos! Agora é a etapa mais emocionante: anúncio no ar! 🎯'},
+  {emoji:'🎯',title:'Anúncio no ar!',msg:'Você fez tudo certinho — produto, plataforma, Instagram, criativos e agora o anúncio rodando. Faltou só uma coisa: a primeira venda. E ela está chegando. Respira, confia no processo. Você fez sua parte! 💜'},
+];
 
-function setSaveStatus(status) {
-  const el = document.getElementById('save-indicator');
-  const txt = document.getElementById('save-txt');
-  el.className = 'save-indicator ' + status;
-  if(status === 'saving') txt.textContent = 'salvando...';
-  else if(status === 'saved') txt.textContent = 'salvo';
-}
-
-async function salvarProgresso() {
-  if(!UID) return;
-  setSaveStatus('saving');
-  const etapasConcluidas = [];
-  document.querySelectorAll('.step-item.done').forEach((s,i) => { if(s.classList.contains('done')) etapasConcluidas.push(i); });
-
-  const checkeds = [];
-  document.querySelectorAll('.ck-item').forEach((el,i) => { if(el.classList.contains('checked')) checkeds.push(i); });
-
-  await SB.from('progresso').upsert({
-    user_id: UID,
-    etapa_atual: CUR,
-    etapas_concluidas: UNL,
-    checklist: checkeds,
-    updated_at: new Date().toISOString()
-  }, { onConflict: 'user_id' });
-
-  for(const idx of [0,2]) {
-    if(H[idx].length > 0) {
-      await SB.from('conversas').upsert({
-        user_id: UID,
-        modulo: idx,
-        mensagens: H[idx],
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'user_id,modulo' });
-    }
-  }
-
-  const outEst = document.getElementById('out-est').textContent;
-  const outPg = document.getElementById('out-pg').textContent;
-  if(outEst) await SB.from('geracoes').upsert({ user_id: UID, tipo: 'estrutura', conteudo: outEst, updated_at: new Date().toISOString() }, { onConflict: 'user_id,tipo' });
-  if(outPg) await SB.from('geracoes').upsert({ user_id: UID, tipo: 'pagina', conteudo: outPg, updated_at: new Date().toISOString() }, { onConflict: 'user_id,tipo' });
-
-  setSaveStatus('saved');
-}
-
-function agendarSalvamento() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(salvarProgresso, 2000);
-}
-
-async function carregarProgresso() {
-  if(!UID) return;
-  const { data: prog } = await SB.from('progresso').select('*').eq('user_id', UID).single();
-  if(prog) {
-    prog.etapas_concluidas.forEach(i => {
-      if(i < 5) {
-        UNL.push(i);
-        const stab = document.getElementById(`stab${i}`);
-        const nav = document.getElementById(`nav${i}`);
-        if(stab) { stab.classList.remove('locked'); stab.classList.add('done'); document.getElementById(`sdot${i}`).innerHTML='<i class="ti ti-check" style="font-size:10px"></i>'; }
-        if(nav) nav.classList.remove('locked');
-      }
-    });
-    if(prog.checklist) {
-      const items = document.querySelectorAll('.ck-item');
-      prog.checklist.forEach(i => { if(items[i]) items[i].classList.add('checked'); });
-      const total = items.length;
-      const done = document.querySelectorAll('.ck-item.checked').length;
-      document.getElementById('final-btn').disabled = done < total;
-    }
-    goStep(prog.etapa_atual || 0);
-  }
-
-  for(const idx of [0,2]) {
-    const { data: conv } = await SB.from('conversas').select('*').eq('user_id', UID).eq('modulo', idx).single();
-    if(conv && conv.mensagens.length > 0) {
-      H[idx] = conv.mensagens;
-      conv.mensagens.forEach(m => addM(idx, m.role === 'user' ? 'user' : 'ai', m.content));
-    } else {
-      initChat(idx);
-    }
-  }
-
-  const { data: gens } = await SB.from('geracoes').select('*').eq('user_id', UID);
-  if(gens) {
-    gens.forEach(g => {
-      if(g.tipo === 'estrutura' && g.conteudo) {
-        const out = document.getElementById('out-est');
-        out.textContent = g.conteudo; out.classList.add('show');
-        document.getElementById('act-est').style.display = 'flex';
-      }
-      if(g.tipo === 'pagina' && g.conteudo) {
-        const out = document.getElementById('out-pg');
-        out.textContent = g.conteudo; out.classList.add('show');
-        document.getElementById('act-pg').style.display = 'flex';
-      }
-    });
-  }
-
-  atualizarStats();
-}
-
-function atualizarStats() {
-  const done = document.querySelectorAll('.step-item.done').length;
-  const pct = Math.round(((CUR+1)/5)*100);
-  document.getElementById('prog-bar').style.width = pct+'%';
-  document.getElementById('stat-etapa').textContent = CUR+1;
-  document.getElementById('stat-done').textContent = done;
-  document.getElementById('stat-pct').textContent = pct+'%';
-}
-
-function showLogin(){ document.getElementById('login-screen').style.display='flex'; document.getElementById('forgot-screen').style.display='none'; document.getElementById('app').style.display='none'; }
-function showForgot(){ document.getElementById('login-screen').style.display='none'; document.getElementById('forgot-screen').style.display='flex'; }
+function showLogin(){document.getElementById('login-screen').style.display='flex';document.getElementById('forgot-screen').style.display='none';document.getElementById('app').style.display='none';}
+function showForgot(){document.getElementById('login-screen').style.display='none';document.getElementById('forgot-screen').style.display='flex';}
 function showApp(user){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('forgot-screen').style.display='none';
   document.getElementById('app').style.display='block';
-  UID = user.id;
-  const email = user.email || '';
-  document.getElementById('user-email').textContent = email;
-  document.getElementById('user-avatar').textContent = email[0]?.toUpperCase() || 'A';
+  UID=user.id;
+  const email=user.email||'';
+  document.getElementById('user-avatar').textContent=email[0]?.toUpperCase()||'A';
   carregarProgresso();
 }
 
 async function doLogin(){
-  const email = document.getElementById('login-email').value.trim();
-  const pass = document.getElementById('login-pass').value;
-  const err = document.getElementById('login-error');
-  const btn = document.getElementById('login-btn');
+  const email=document.getElementById('login-email').value.trim();
+  const pass=document.getElementById('login-pass').value;
+  const err=document.getElementById('login-error');
+  const btn=document.getElementById('login-btn');
   err.classList.remove('show');
   if(!email||!pass){err.textContent='Preenche e-mail e senha.';err.classList.add('show');return;}
-  btn.disabled=true; btn.textContent='Entrando...';
-  const {data, error} = await SB.auth.signInWithPassword({email, password:pass});
-  if(error){ err.textContent = error.message==='Invalid login credentials'?'E-mail ou senha incorretos.':'Erro ao entrar.'; err.classList.add('show'); }
-  else { showApp(data.user); }
-  btn.disabled=false; btn.textContent='Entrar';
+  btn.disabled=true;btn.textContent='Entrando...';
+  const {data,error}=await SB.auth.signInWithPassword({email,password:pass});
+  if(error){err.textContent=error.message==='Invalid login credentials'?'E-mail ou senha incorretos.':'Erro ao entrar.';err.classList.add('show');}
+  else{showApp(data.user);}
+  btn.disabled=false;btn.textContent='Entrar';
 }
 
 async function doReset(){
-  const email = document.getElementById('reset-email').value.trim();
-  const err = document.getElementById('reset-error');
-  const suc = document.getElementById('reset-success');
-  const btn = document.getElementById('reset-btn');
-  err.classList.remove('show'); suc.classList.remove('show');
+  const email=document.getElementById('reset-email').value.trim();
+  const err=document.getElementById('reset-error');
+  const suc=document.getElementById('reset-success');
+  const btn=document.getElementById('reset-btn');
+  err.classList.remove('show');suc.classList.remove('show');
   if(!email){err.textContent='Informe seu e-mail.';err.classList.add('show');return;}
-  btn.disabled=true; btn.textContent='Enviando...';
-  const {error} = await SB.auth.resetPasswordForEmail(email, {redirectTo: 'https://pexia.lauralima.com.br'});
+  btn.disabled=true;btn.textContent='Enviando...';
+  const {error}=await SB.auth.resetPasswordForEmail(email,{redirectTo:'https://pexia.lauralima.com.br'});
   if(error){err.textContent='Erro ao enviar.';err.classList.add('show');}
   else{suc.classList.add('show');}
-  btn.disabled=false; btn.textContent='Enviar link de redefinição';
+  btn.disabled=false;btn.textContent='Enviar link de redefinição';
 }
 
-async function doLogout(){ await SB.auth.signOut(); showLogin(); }
+async function doLogout(){await SB.auth.signOut();showLogin();}
+SB.auth.getSession().then(({data})=>{if(data.session?.user)showApp(data.session.user);});
 
-SB.auth.getSession().then(({data}) => { if(data.session?.user){ showApp(data.session.user); } });
-SB.auth.onAuthStateChange((event, session) => { if(event==='SIGNED_IN' && session?.user){ UID=session.user.id; } });
-
-function initChat(idx){
-  const msgs = {
-    0: "Oi! Sou a PEX IA. Antes de qualquer coisa — esquece a ideia de que você precisa ser expert. A gente vai descobrir juntas o que você já sabe pela vida que levou. Me conta: no dia a dia, as pessoas te pedem conselho sobre o quê?",
-    2: "Ótimo! Produto definido. Agora vamos criar o conteúdo. Me diz o que quer que eu escreva primeiro — capítulo, módulo, introdução — e já te entrego o texto pronto."
-  };
-  if(H[idx].length === 0){ addM(idx,'ai',msgs[idx]); H[idx].push({role:'assistant',content:msgs[idx]}); }
-}
-
-function addM(idx,who,txt){
-  const box = document.getElementById(`chat${idx}`);
-  if(!box) return;
-  const w = document.createElement('div'); w.className=`cmsg ${who}`;
-  const wl = document.createElement('div'); wl.className='cwho'; wl.textContent=who==='ai'?'PEX IA':'Você';
-  const b = document.createElement('div'); b.className='cbubble'; b.textContent=txt;
-  w.appendChild(wl); w.appendChild(b); box.appendChild(w); box.scrollTop=box.scrollHeight;
-}
-function addTyp(idx){
-  const box = document.getElementById(`chat${idx}`);
-  const w = document.createElement('div'); w.className='cmsg ai'; w.id=`typ${idx}`;
-  const wl = document.createElement('div'); wl.className='cwho'; wl.textContent='PEX IA';
-  const b = document.createElement('div'); b.className='cbubble'; b.innerHTML='<div class="typing-d"><span></span><span></span><span></span></div>';
-  w.appendChild(wl); w.appendChild(b); box.appendChild(w); box.scrollTop=box.scrollHeight;
-}
-function rmTyp(idx){ const e=document.getElementById(`typ${idx}`); if(e)e.remove(); }
-
-async function send(idx){
-  const inp = document.getElementById(`inp${idx}`);
-  const btn = document.getElementById(`sb${idx}`);
-  const txt = inp.value.trim(); if(!txt) return;
-  inp.value=''; btn.disabled=true;
-  addM(idx,'user',txt); H[idx].push({role:'user',content:txt}); addTyp(idx);
+async function carregarProgresso(){
+  if(!UID)return;
   try{
-    const r = await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:H[idx]})});
-    const d = await r.json();
-    const rep = d.content?.[0]?.text || 'Erro. Tenta de novo!';
-    rmTyp(idx); addM(idx,'ai',rep); H[idx].push({role:'assistant',content:rep});
-    agendarSalvamento();
-  } catch(e){ rmTyp(idx); addM(idx,'ai','Erro de conexão. Tenta de novo!'); }
-  btn.disabled=false;
+    const {data}=await SB.from('progresso').select('*').eq('user_id',UID).single();
+    if(data&&data.etapas_concluidas){
+      data.etapas_concluidas.forEach(i=>{if(!UNL.includes(i+1))UNL.push(i+1);marcarDone(i);});
+      goStep(data.etapa_atual||0);
+    }
+  }catch(e){}
 }
-function sc(idx,txt){ document.getElementById(`inp${idx}`).value=txt; send(idx); }
+
+async function salvarProgresso(){
+  if(!UID)return;
+  const concluidas=[];
+  document.querySelectorAll('.step-pill.done').forEach((s,i)=>{if(s.classList.contains('done'))concluidas.push(i);});
+  try{await SB.from('progresso').upsert({user_id:UID,etapa_atual:CUR,etapas_concluidas:concluidas,updated_at:new Date().toISOString()},{onConflict:'user_id'});}catch(e){}
+}
+
+function copyP(pid,bid){
+  const text=document.getElementById(pid).innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.getElementById(bid);
+    btn.classList.add('copied');
+    btn.innerHTML='<i class="ti ti-check"></i> Copiado!';
+    setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML='<i class="ti ti-copy"></i> Copiar';},2500);
+  });
+}
 
 function goStep(i){
-  if(!UNL.includes(i)) return;
+  if(!UNL.includes(i))return;
   CUR=i;
-  document.querySelectorAll('.panel').forEach((p,j)=>p.style.display=j===i?'block':'none');
+  for(let j=0;j<TOTAL;j++)document.getElementById(`panel${j}`).style.display=j===i?'block':'none';
   document.querySelectorAll('.nav-item').forEach((n,j)=>{n.classList.remove('active');if(j===i)n.classList.add('active');});
-  document.querySelectorAll('.step-item').forEach((s,j)=>{s.classList.remove('active');if(j===i&&!s.classList.contains('done'))s.classList.add('active');});
+  document.querySelectorAll('.step-pill').forEach((s,j)=>{s.classList.remove('active');if(j===i&&!s.classList.contains('done'))s.classList.add('active');});
   document.getElementById('page-title').textContent=NAMES[i];
-  if(i===2&&H[2].length===0) initChat(2);
-  atualizarStats();
+  if(i>=6){
+    const calc=document.getElementById('calc-btn');
+    calc.classList.remove('locked-res');
+    calc.href='https://drive.google.com/drive/folders/1da_2jPNb7kgiTEK49bXGm1jFGu09CVka?usp=sharing';
+    calc.target='_blank';
+    const lockIcon=calc.querySelector('.ti-lock');
+    if(lockIcon)lockIcon.remove();
+  }
+  updateStats();
+  document.getElementById('content-area').scrollTop=0;
 }
 
-async function gerarEstrutura(){
-  const n=document.getElementById('p-nicho').value.trim();
-  const f=document.getElementById('p-fmt').value;
-  const p=document.getElementById('p-prob').value.trim();
-  if(!n||!p){alert('Preenche o nicho e o problema!');return;}
-  const btn=document.getElementById('btn-est'); btn.disabled=true; btn.innerHTML='<span class="spin"></span>Gerando...';
-  const out=document.getElementById('out-est'); out.classList.remove('show'); document.getElementById('act-est').style.display='none';
-  try{
-    const r=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:[{role:'user',content:`Cria estrutura completa de um ${f} sobre "${n}" que resolve: "${p}". Inclua: título sugerido, subtítulo, todos os capítulos/módulos com descrição breve, 2 ideias de bônus. Seja específica e prática.`}]})});
-    const d=await r.json(); out.textContent=d.content?.[0]?.text||'Erro.'; out.classList.add('show'); document.getElementById('act-est').style.display='flex';
-    agendarSalvamento();
-  }catch(e){out.textContent='Erro de conexão.';out.classList.add('show');}
-  btn.disabled=false; btn.innerHTML='<i class="ti ti-wand"></i> Gerar estrutura do produto';
+function updateStats(){
+  const done=document.querySelectorAll('.step-pill.done').length;
+  const pct=Math.round(((CUR+1)/TOTAL)*100);
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-txt').textContent=`Etapa ${CUR+1} de ${TOTAL}`;
+  document.getElementById('stat-etapa').textContent=CUR+1;
+  document.getElementById('stat-done').textContent=done;
+  document.getElementById('stat-pct').textContent=pct+'%';
 }
 
-async function gerarPagina(){
-  const n=document.getElementById('pg-nome').value.trim();
-  const pr=document.getElementById('pg-preco').value.trim();
-  const pb=document.getElementById('pg-pub').value.trim();
-  const rs=document.getElementById('pg-res').value.trim();
-  if(!n||!pb||!rs){alert('Preenche nome, público e resultado!');return;}
-  const btn=document.getElementById('btn-pg'); btn.disabled=true; btn.innerHTML='<span class="spin"></span>Gerando...';
-  const out=document.getElementById('out-pg'); out.classList.remove('show'); document.getElementById('act-pg').style.display='none';
-  try{
-    const r=await fetch(PROXY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:[{role:'user',content:`Gera copy completa de página de vendas para Kiwify:\nProduto: ${n}\nPúblico: ${pb}\nResultado: ${rs}\n${pr?'Preço: '+pr:''}\nEstrutura: 1) Headline 2) Subheadline 3) Para quem é (3 dores) 4) O que aprende (5 pontos) 5) Por que funciona 6) O que inclui 7) Garantia 8) CTA. Tom direto, brasileiro.`}]})});
-    const d=await r.json(); out.textContent=d.content?.[0]?.text||'Erro.'; out.classList.add('show'); document.getElementById('act-pg').style.display='flex';
-    agendarSalvamento();
-  }catch(e){out.textContent='Erro de conexão.';out.classList.add('show');}
-  btn.disabled=false; btn.innerHTML='<i class="ti ti-wand"></i> Gerar página de vendas';
+function checkAdv(i){
+  const r=document.getElementById(`r${i}`);
+  const btn=document.getElementById(`adv${i}`);
+  if(r&&btn)btn.disabled=r.value.trim().length<10;
 }
 
-function complete(i){
-  if(!UNL.includes(i+1)) UNL.push(i+1);
-  const stab=document.getElementById(`stab${i}`); stab.classList.remove('active'); stab.classList.add('done');
-  document.getElementById(`sdot${i}`).innerHTML='<i class="ti ti-check" style="font-size:10px"></i>';
-  const next=document.getElementById(`stab${i+1}`); const navnext=document.getElementById(`nav${i+1}`);
-  if(next) next.classList.remove('locked'); if(navnext) navnext.classList.remove('locked');
-  goStep(i+1);
-  agendarSalvamento();
+function ck(el){el.classList.toggle('checked');}
+
+function checkFinal(){
+  const total=document.querySelectorAll('#ck-final .ck-item').length;
+  const done=document.querySelectorAll('#ck-final .ck-item.checked').length;
+  document.getElementById('adv6').disabled=done<total;
 }
 
-function ck(el){
+function checkCriativos(){
+  const done=document.querySelectorAll('#ck-criativos .ck-item.checked').length;
+  document.getElementById('adv5').disabled=done<6;
+}
+
+function marcarDone(i){
+  const stab=document.getElementById(`stab${i}`);
+  if(stab){stab.classList.remove('active');stab.classList.add('done');document.getElementById(`sdot${i}`).textContent='✓';}
+  const nav=document.querySelectorAll('.nav-item')[i];
+  if(nav){nav.classList.remove('active','locked');nav.classList.add('done');const lk=nav.querySelector('.lock-icon');if(lk)lk.remove();}
+  const next=document.getElementById(`stab${i+1}`);
+  if(next){next.classList.remove('locked');document.getElementById(`sdot${i+1}`).textContent=i+2;}
+  const navnext=document.querySelectorAll('.nav-item')[i+1];
+  if(navnext){navnext.classList.remove('locked');const lk2=navnext.querySelector('.lock-icon');if(lk2)lk2.remove();}
+}
+
+function advance(i){
+  marcarDone(i);
+  if(!UNL.includes(i+1))UNL.push(i+1);
+  salvarProgresso();
+  const m=MOTIVACIONAL[i];
+  if(m){
+    document.getElementById('modal-emoji').textContent=m.emoji;
+    document.getElementById('modal-title').textContent=m.title;
+    document.getElementById('modal-msg').textContent=m.msg;
+    document.getElementById('modal-bg').classList.add('show');
+  } else {
+    goStep(i+1<TOTAL?i+1:i);
+  }
+  updateStats();
+}
+
+function fecharModal(){
+  document.getElementById('modal-bg').classList.remove('show');
+  goStep(CUR+1<TOTAL?CUR+1:CUR);
+}
+
+function escolherPagina(sim){
+  document.getElementById('ch-sim').classList.toggle('selected',sim);
+  document.getElementById('ch-nao').classList.toggle('selected',!sim);
+  document.getElementById('pag-content').style.display=sim?'block':'none';
+  document.querySelectorAll('.pagina-ck').forEach(el=>el.style.display=sim?'flex':'none');
+}
+
+function marcarPrimeiraVenda(el){
   el.classList.toggle('checked');
-  const total=document.querySelectorAll('.ck-item').length;
-  const done=document.querySelectorAll('.ck-item.checked').length;
-  document.getElementById('final-btn').disabled=done<total;
-  agendarSalvamento();
-}
-
-function finalizar(){
-  document.getElementById('cklist').style.display='none';
-  document.getElementById('final-btn').style.display='none';
-  document.getElementById('celebrate').classList.add('show');
-  document.getElementById('sdot4').innerHTML='<i class="ti ti-check" style="font-size:10px"></i>';
-  document.getElementById('stab4').classList.remove('active'); document.getElementById('stab4').classList.add('done');
-  atualizarStats();
+  const venda=document.getElementById('venda-content');
+  venda.style.display=el.classList.contains('checked')?'block':'none';
   salvarProgresso();
 }
 
-function cp(id){ navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>alert('Copiado!')); }
+[0,1,3].forEach(i=>{const ta=document.getElementById(`r${i}`);if(ta)ta.addEventListener('input',()=>checkAdv(i));});
+updateStats();
 </script>
 </body>
 </html>
